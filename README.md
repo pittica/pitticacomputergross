@@ -1,7 +1,7 @@
 # pittica/prestashop-dropshipping
 
-![License](https://img.shields.io/github/license/pittica/prestashop-dropshipping)
-![Release](https://img.shields.io/github/v/release/pittica/prestashop-dropshipping)
+![License](https://img.shields.io/github/license/pittica/prestashop-computergross)
+![Release](https://img.shields.io/github/v/release/pittica/prestashop-computergross)
 
 [PrestaShop](https://github.com/prestashop/prestashop) source module for Computer Gross.
 
@@ -12,4 +12,3 @@
 ## Copyright
 
 (c) 2022, Pittica S.r.l.
-
