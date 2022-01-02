@@ -44,7 +44,7 @@ class PitticaComputergross extends Module
     {
         $this->name          = 'pitticacomputergross';
         $this->tab           = 'market_place';
-        $this->version       = '1.0.0';
+        $this->version       = '1.0.1';
         $this->author        = 'Pittica';
         $this->need_instance = 1;
         $this->bootstrap     = 1;
@@ -310,9 +310,10 @@ class PitticaComputergross extends Module
                         ),
                         'input' => array(
                             array(
-                                'type'  => 'file',
-                                'label' => $this->l('XLS File'),
-                                'name'  => 'PITTICA_COMPUTERGROSS_FILE'
+                                'type'          => 'file',
+                                'label'         => $this->l('XLS File'),
+                                'name'          => 'PITTICA_COMPUTERGROSS_FILE',
+                                'display_image' => true
                             )
                         ),
                         'submit' => array(

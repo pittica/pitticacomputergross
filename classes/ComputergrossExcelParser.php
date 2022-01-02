@@ -67,12 +67,17 @@ class ComputergrossExcelParser
      */
     public function parse()
     {
-        $reader = IOFactory::createReaderForFile($this->file);
-        $reader->setReadDataOnly(true);
-        $excel = $reader->load($this->file);
+        try {
+            $reader = IOFactory::createReaderForFile($this->file);
+        } catch (Exception $ex) {
+            return $this;
+        }
 
+        $reader->setReadDataOnly(true);
+
+        $excel     = $reader->load($this->file);
         $worksheet = $excel->getActiveSheet();
-        $content = $worksheet->toArray();
+        $content   = $worksheet->toArray();
 
         if (!empty($content)) {
             unset($content[0]);
