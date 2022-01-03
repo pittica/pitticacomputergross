@@ -17,7 +17,7 @@ if (!defined('_PS_VERSION_')) {
     exit;
 }
 
-use PrestaShopBundle\Form\Admin\Type\TextWithRecommendedLengthType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'classes'. DIRECTORY_SEPARATOR . 'ComputergrossCategory.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'classes'. DIRECTORY_SEPARATOR . 'ComputergrossExcelParser.php';
@@ -44,7 +44,7 @@ class PitticaComputergross extends Module
     {
         $this->name          = 'pitticacomputergross';
         $this->tab           = 'market_place';
-        $this->version       = '1.0.1';
+        $this->version       = '1.1.0';
         $this->author        = 'Pittica';
         $this->need_instance = 1;
         $this->bootstrap     = 1;
@@ -446,7 +446,7 @@ class PitticaComputergross extends Module
     private function _handleObjectUpdate($object, $id, $data)
     {
         if (!empty($data['computergross_name'])) {
-            $object->name = $data['computergross_name'];
+            $object->setNames($data['computergross_name']);
         }
         
         if (!$object->id) {
@@ -471,17 +471,20 @@ class PitticaComputergross extends Module
     private function _setFormFields($builder, $object, &$data)
     {
         if ($object) {
-            $data['computergross_name'] = $object->name;
+            $data['computergross_name'] = implode(', ', $object->getNames());
         }
 
         $builder
             ->add(
                 'computergross_name',
-                TextWithRecommendedLengthType::class,
+                TextType::class,
                 array(
-                    'label'              => $this->l('Computer Gross Name'),
-                    'recommended_length' => 255,
-                    'required'           => false
+                    'label'    => $this->l('Computer Gross Name'),
+                    'required' => false,
+                    'attr' => array(
+                        'class' => 'js-taggable-field',
+                        'placeholder' => $this->trans('Add tag', array(), 'Admin.Actions')
+                    )
                 )
             )
             ->setData($data);

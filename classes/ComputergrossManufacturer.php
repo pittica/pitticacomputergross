@@ -13,6 +13,8 @@
  * @link      https://github.com/pittica/prestashop-computergross
  */
 
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'ComputergrossObjectModel.php';
+
 /**
  * Manufacturer object model.
  *
@@ -23,25 +25,9 @@
  * @link     https://github.com/pittica/prestashop-computergross/blob/main/classes/ComputergrossManufacturer.php
  * @since    1.0.0
  */
-class ComputergrossManufacturer extends ObjectModel
+class ComputergrossManufacturer extends ComputergrossObjectModel
 {
     const TABLE_NAME = 'pittica_computergross_manufacturer';
-
-    /**
-     * {@inheritDoc}
-     *
-     * @var   boolean
-     * @since 1.0.0
-     */
-    public $force_id = true;
-
-    /**
-     * Computer Gross name.
-     *
-     * @var   string
-     * @since 1.0.0
-     */
-    public $name;
 
     /**
      * {@inheritDoc}
@@ -54,7 +40,7 @@ class ComputergrossManufacturer extends ObjectModel
         'primary' => 'id_manufacturer',
         'fields'  => array(
             'name' => array(
-                'type' => self::TYPE_STRING, 'required' => false, 'size' => 255, 'lang' => false
+                'type' => self::TYPE_STRING, 'required' => false
             )
         )
     );
@@ -69,13 +55,7 @@ class ComputergrossManufacturer extends ObjectModel
      */
     public static function findByName($name)
     {
-        $query = new DbQuery();
-        $query
-            ->select('cc.id_manufacturer')
-            ->from(self::TABLE_NAME, 'cc')
-            ->where('cc.name = "' . pSQL(trim($name)) . '"');
-
-        $id = (int) Db::getInstance(_PS_USE_SQL_SLAVE_)->getValue($query);
+        $id = self::findIdByName($name);
 
         if ($id) {
             return new Manufacturer($id);
@@ -111,7 +91,8 @@ class ComputergrossManufacturer extends ObjectModel
 
             $cgc = new self($manufacturer->id);
             $cgc->id   = $manufacturer->id;
-            $cgc->name = $name;
+            
+            $cgc->setNames($name);
 
             $cgc->add();
         }

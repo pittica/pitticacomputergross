@@ -17,12 +17,12 @@ $sql = array();
 
 $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . ComputergrossManufacturer::TABLE_NAME . '` (
 	`id_manufacturer` INT(10) UNSIGNED NOT NULL PRIMARY KEY,
-    `name` VARCHAR(255) NULL
+    `name` JSON NULL
 ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
 
 $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . ComputergrossCategory::TABLE_NAME . '` (
 	`id_category` INT(10) UNSIGNED NOT NULL PRIMARY KEY,
-    `name` VARCHAR(255) NULL
+    `name` JSON NULL
 ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
 
 foreach ($sql as $query) {
