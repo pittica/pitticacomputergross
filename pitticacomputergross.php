@@ -10,7 +10,7 @@
  * @author    Lucio Benini <info@pittica.com>
  * @copyright 2022 Pittica S.r.l.
  * @license   http://opensource.org/licenses/LGPL-3.0  The GNU Lesser General Public License, version 3.0 ( LGPL-3.0 )
- * @link      https://github.com/pittica/prestashop-cComputergross
+ * @link      https://github.com/pittica/prestashop-computergross
  */
 
 if (!defined('_PS_VERSION_')) {
@@ -288,7 +288,6 @@ class PitticaComputergross extends Module
         $helper->module                   = $this;
         $helper->default_form_language    = $this->context->language->id;
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG') ?: 0;
-        $this->fields_form                = array();
         $helper->id                       = (int) Tools::getValue('id_carrier');
         $helper->identifier               = $this->identifier;
         $helper->submit_action            = 'btnSubmit';

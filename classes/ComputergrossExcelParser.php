@@ -172,7 +172,7 @@ class ComputergrossExcelParser
                     $product->manufacturer_name         = $manufacturer->name;
                     $product->advanced_stock_management = true;
                     $product->active                    = false;
-                    $product->condition                = strpos($line[0], 'REFURBISHED') === false ? 'new' : 'refurbished';
+                    $product->condition                 = strpos($line[0], 'REFURBISHED') === false ? 'new' : 'refurbished';
                     $product->show_condition            = true;
                         
                     foreach ($languages as $language) {

@@ -1,16 +1,16 @@
 <?php
 
 /**
- * PrestaShop Module - pitticadropshipping
+ * PrestaShop Module - pitticacomputergross
  *
  * Copyright 2022 Pittica S.r.l.
  *
  * @category  Module
- * @package   Pittica/PrestaShop/Module/Dropshipping
+ * @package   Pittica/PrestaShop/Module/Computergross
  * @author    Lucio Benini <info@pittica.com>
  * @copyright 2022 Pittica S.r.l.
  * @license   http://opensource.org/licenses/LGPL-3.0  The GNU Lesser General Public License, version 3.0 ( LGPL-3.0 )
- * @link      https://github.com/pittica/prestashop-dropshipping
+ * @link      https://github.com/pittica/prestashop-computergross
  */
 
 header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
